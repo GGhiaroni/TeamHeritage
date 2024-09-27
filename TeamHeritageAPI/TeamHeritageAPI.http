@@ -1,0 +1,6 @@
+@TeamHeritageAPI_HostAddress = http://localhost:5017
+
+GET {{TeamHeritageAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
