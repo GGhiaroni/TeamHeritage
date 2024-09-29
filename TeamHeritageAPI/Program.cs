@@ -10,7 +10,11 @@ builder.Services.AddDbContext<TeamHeritageDbContext>(options =>
 // Outros serviços
 builder.Services.AddControllers();
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(DAL<>));
+
 var app = builder.Build();
+
+app.MapTimesEndpoints();
 
 // Configurar os middlewares
 app.UseHttpsRedirection();
