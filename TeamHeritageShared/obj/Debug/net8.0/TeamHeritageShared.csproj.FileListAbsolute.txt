@@ -1,0 +1,12 @@
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/bin/Debug/net8.0/TeamHeritageShared.deps.json
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/bin/Debug/net8.0/TeamHeritageShared.dll
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/bin/Debug/net8.0/TeamHeritageShared.pdb
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.AssemblyInfoInputs.cache
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.AssemblyInfo.cs
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.csproj.CoreCompileInputs.cache
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.sourcelink.json
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.dll
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/refint/TeamHeritageShared.dll
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/TeamHeritageShared.pdb
+/Users/gabrielghiaroni/Desktop/TeamHeritage/TeamHeritageShared/obj/Debug/net8.0/ref/TeamHeritageShared.dll
