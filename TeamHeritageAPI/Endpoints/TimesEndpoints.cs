@@ -1,16 +1,51 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using TeamHeritageShared.Models;
 
 public static class TimesEndpoints
 {
     public static void MapTimesEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/times", async (IRepository<Time> repository) =>
+        app.MapGet("/Times", async (IRepository<Time> repository) =>
         {
             var times = await repository.GetAllAsync();
             return Results.Ok(times);
+        });
+
+        app.MapPost("/CadastrarTime", async (IRepository<Time> repository, Time novoTime) =>
+        {
+            await repository.AddAsync(novoTime);
+            return Results.Created($"/times/{novoTime.TimeId}", novoTime);
+        });
+
+        app.MapGet("/times/{id:int}", async (IRepository<Time> repository, int id) =>
+        {
+            var time = await repository.GetByIdAsync(id);
+            return time != null ? Results.Ok(time) : Results.NotFound();
+        });
+
+        app.MapPut("/times/{id:int}", async (IRepository<Time> repository, int id, Time timeAtualizado) =>
+        {
+            var timeExistente = await repository.GetByIdAsync(id);
+            if (timeExistente is null) return Results.NotFound();
+
+            timeExistente.Nome = timeAtualizado.Nome;
+            timeExistente.Cidade = timeAtualizado.Cidade;
+            timeExistente.Pais = timeAtualizado.Pais;
+            timeExistente.Estadio = timeAtualizado.Estadio;
+            timeExistente.NumeroTorcedores = timeAtualizado.NumeroTorcedores;
+            timeExistente.Descricao = timeAtualizado.Descricao;
+            timeExistente.EscudoOficial = timeAtualizado.EscudoOficial;
+
+            await repository.UpdateAsync(timeExistente);
+            return Results.Ok(timeAtualizado);
+        });
+
+        app.MapDelete("/times/{id:int}", async (IRepository<Time> repository, int id) =>
+        {
+            var time = await repository.GetByIdAsync(id);
+            if (time is null) return Results.NotFound();
+
+            await repository.DeleteAsync(id);
+            return Results.NoContent();
         });
     }
 }
