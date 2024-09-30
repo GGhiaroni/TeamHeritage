@@ -1,3 +1,4 @@
+using TeamHeritageAPI.Requests;
 using TeamHeritageShared.Models;
 
 public static class TimesEndpoints
@@ -10,8 +11,18 @@ public static class TimesEndpoints
             return Results.Ok(times);
         });
 
-        app.MapPost("/CadastrarTime", async (IRepository<Time> repository, Time novoTime) =>
+        app.MapPost("/CadastrarTime", async (IRepository<Time> repository, TimeRequest timeRequest) =>
         {
+            Time novoTime = new Time(
+                timeRequest.nome,
+                timeRequest.cidade,
+                timeRequest.pais,
+                timeRequest.estadio,
+                timeRequest.numeroTorcedores,
+                timeRequest.descricao,
+                timeRequest.escudoOficial
+            );
+
             await repository.AddAsync(novoTime);
             return Results.Created($"/times/{novoTime.TimeId}", novoTime);
         });
