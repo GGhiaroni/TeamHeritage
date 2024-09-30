@@ -34,5 +34,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapTimesEndpoints();
+app.MapTitulosEndpoints();
 
 app.Run();
