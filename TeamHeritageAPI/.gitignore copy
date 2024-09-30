@@ -1,0 +1,45 @@
+# Ignore arquivos compilados
+bin/
+obj/
+out/
+
+# Logs e relatórios
+*.log
+*.nlog
+*.xml.log
+*.tlog
+
+# Arquivos do Visual Studio Code
+.vscode/
+.vscode/**
+
+# Arquivos do Visual Studio
+.vs/
+.vs/**
+
+# Arquivos gerados automaticamente pelo sistema
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignorar pastas de pacotes
+packages/
+node_modules/
+dist/
+
+# Arquivos temporários de build
+*.cache/
+*.csproj.user
+*.pdb
+*.dll
+*.exe
+
+# Ignore secrets e arquivos de configuração locais
+appsettings*.json
+secrets.json
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
