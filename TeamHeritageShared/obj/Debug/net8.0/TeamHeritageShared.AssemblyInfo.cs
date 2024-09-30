@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TeamHeritageShared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+400e380128eb03ea55b3486438240cc0562dd8fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73b78b23997bc2c44c9d417ea3585dfc17440f5b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TeamHeritageShared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TeamHeritageShared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
