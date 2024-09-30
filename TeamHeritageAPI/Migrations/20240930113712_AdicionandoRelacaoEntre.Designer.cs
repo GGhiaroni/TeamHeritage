@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamHeritageAPI.Banco;
 
@@ -11,9 +12,11 @@ using TeamHeritageAPI.Banco;
 namespace TeamHeritageAPI.Migrations
 {
     [DbContext(typeof(TeamHeritageDbContext))]
-    partial class TeamHeritageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240930113712_AdicionandoRelacaoEntre")]
+    partial class AdicionandoRelacaoEntre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

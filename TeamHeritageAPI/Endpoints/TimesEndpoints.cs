@@ -1,4 +1,5 @@
 using TeamHeritageAPI.Requests;
+using TeamHeritageAPI.Responses;
 using TeamHeritageShared.Models;
 
 public static class TimesEndpoints
@@ -58,5 +59,19 @@ public static class TimesEndpoints
             await repository.DeleteAsync(id);
             return Results.NoContent();
         });
+    }
+
+    private static ICollection<TimeResponse> EntityToResponseList(IEnumerable<Time> listaDeTimes)
+    {
+        return listaDeTimes.Select(time => EntityToResponse(time)).ToList();
+    }
+
+    private static TimeResponse EntityToResponse(Time time)
+    {
+        return new TimeResponse(
+            time.Nome, time.Cidade, time.Pais,
+            time.Estadio, time.NumeroTorcedores, time.Descricao,
+            time.EscudoOficial, time.Titulos
+            );
     }
 }
