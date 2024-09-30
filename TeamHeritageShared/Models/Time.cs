@@ -4,6 +4,12 @@ namespace TeamHeritageShared.Models
 {
     public class Time
     {
+        public Time(string nome, string cidade, string pais)
+        {
+            Nome = nome;
+            Cidade = cidade;
+            Pais = pais;
+        }
         public int TimeId { get; set; }
         public string Nome { get; set; }
         public string Cidade { get; set; }
