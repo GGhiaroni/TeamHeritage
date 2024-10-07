@@ -24,6 +24,6 @@ namespace TeamHeritageShared.Models
         public int? NumeroTorcedores { get; set; }
         public string? Descricao { get; set; }
         public string? EscudoOficial { get; set; }
-        public ICollection<Titulo>? Titulos { get; set; }
+        public ICollection<Titulo>? Titulos { get; set; } = new List<Titulo>();
     }
 }

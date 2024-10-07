@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TeamHeritageShared.Models
 {
     public class Titulo
@@ -10,5 +12,9 @@ namespace TeamHeritageShared.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int Ano { get; set; }
+        public int TimeId { get; set; }
+
+        [JsonIgnore]
+        public Time? Time { get; set; }
     }
 }

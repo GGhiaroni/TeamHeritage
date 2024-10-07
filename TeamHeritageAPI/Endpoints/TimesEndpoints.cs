@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using TeamHeritageAPI.Banco;
 using TeamHeritageAPI.Requests;
 using TeamHeritageAPI.Responses;
 using TeamHeritageShared.Models;
@@ -6,9 +8,11 @@ public static class TimesEndpoints
 {
     public static void MapTimesEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/Times", async (IRepository<Time> repository) =>
+        app.MapGet("/Times", async (TeamHeritageDbContext context) =>
         {
-            var times = await repository.GetAllAsync();
+            var times = await context.Times
+            .Include(t => t.Titulos)
+            .ToListAsync();
             return Results.Ok(times);
         });
 
