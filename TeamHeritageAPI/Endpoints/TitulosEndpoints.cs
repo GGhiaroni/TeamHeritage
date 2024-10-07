@@ -6,6 +6,12 @@ public static class TitulosEndpoints
 {
     public static void MapTitulosEndpoints(this IEndpointRouteBuilder app)
     {
+        app.MapGet("/time/ListaDeTitulos", async (IRepository<Titulo> repository) =>
+        {
+            var titulos = await repository.GetAllAsync();
+            return Results.Ok(titulos);
+        });
+
         app.MapPost("/time/{timeId:int}/AdicionarTitulo", async (IRepository<Time> repository, int timeId, TituloRequest tituloRequest) =>
         {
             var timeExistente = await repository.GetByIdAsync(timeId);
