@@ -49,6 +49,7 @@ public static class TitulosEndpoints
 
             return Results.Ok(timeExistente);
         });
+
         app.MapPut("/titulo/{tituloId}", async (IRepository<Titulo> repository, int tituloId, TituloRequestEdit tituloRequestEdit) =>
         {
             var titulo = await repository.BuscaPorAsync(t => t.Id.Equals(tituloId));
@@ -56,8 +57,12 @@ public static class TitulosEndpoints
             {
                 return Results.NotFound("Nenhum título encontrado com esse id.");
             }
+
             titulo.Nome = tituloRequestEdit.Nome;
             titulo.Ano = tituloRequestEdit.Ano;
+
+            await repository.UpdateAsync(titulo);
+
             return Results.Ok(titulo);
         });
     }
