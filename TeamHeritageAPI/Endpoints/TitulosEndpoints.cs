@@ -1,6 +1,8 @@
 using TeamHeritageAPI.Requests;
 using TeamHeritageAPI.Responses;
 using TeamHeritageShared.Models;
+using TeamHeritageAPI.Banco;
+
 
 public static class TitulosEndpoints
 {
@@ -10,6 +12,20 @@ public static class TitulosEndpoints
         {
             var titulos = await repository.GetAllAsync();
             return Results.Ok(titulos);
+        });
+
+        app.MapGet("/titulo/{nome}", async (IRepository<Titulo> repository, string nome) =>
+        {
+            var titulos = await repository.BuscaPorAsync(t => t.Nome.ToUpper().Contains(nome.ToUpper()));
+            if (titulos.Any())
+            {
+                return Results.Ok(titulos);
+            }
+            else
+            {
+                return Results.NotFound("Nenhum título encontrado com esse nome.");
+            }
+
         });
 
         app.MapPost("/time/{timeId:int}/AdicionarTitulo", async (IRepository<Time> repository, int timeId, TituloRequest tituloRequest) =>
