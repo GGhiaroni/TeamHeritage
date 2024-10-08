@@ -25,7 +25,6 @@ public static class TitulosEndpoints
             {
                 return Results.NotFound("Nenhum título encontrado com esse nome.");
             }
-
         });
 
         app.MapPost("/time/{timeId:int}/AdicionarTitulo", async (IRepository<Time> repository, int timeId, TituloRequest tituloRequest) =>
@@ -49,6 +48,10 @@ public static class TitulosEndpoints
             await repository.UpdateAsync(timeExistente);
 
             return Results.Ok(timeExistente);
+        });
+        app.MapPut("/titulo/{tituloId}", async (IRepository<Titulo> repository, int tituloId, TituloRequestEdit tituloRequestEdit) =>
+        {
+
         });
     }
 }
