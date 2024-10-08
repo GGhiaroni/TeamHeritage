@@ -44,8 +44,8 @@ public class DAL<T> : IRepository<T> where T : class
             await _context.SaveChangesAsync();
         }
     }
-    public async Task<IEnumerable<T>> BuscaPorAsync(Expression<Func<T, bool>> condicao)
+    public async Task<T> BuscaPorAsync(Expression<Func<T, bool>> condicao)
     {
-        return await _context.Set<T>().Where(condicao).ToListAsync();
+        return await _dbSet.FirstOrDefaultAsync(condicao);
     }
 }
