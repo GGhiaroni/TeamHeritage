@@ -1,4 +1,5 @@
 
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using TeamHeritageAPI.Banco;
 
@@ -34,7 +35,6 @@ public class DAL<T> : IRepository<T> where T : class
         _dbSet.Update(entity);
         await _context.SaveChangesAsync();
     }
-
     public async Task DeleteAsync(int id)
     {
         var entity = await _dbSet.FindAsync(id);
@@ -43,5 +43,9 @@ public class DAL<T> : IRepository<T> where T : class
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
+    }
+    public async Task<IEnumerable<T>> BuscaPorAsync(Expression<Func<T, bool>> condicao)
+    {
+        return await _context.Set<T>().Where(condicao).ToListAsync();
     }
 }
