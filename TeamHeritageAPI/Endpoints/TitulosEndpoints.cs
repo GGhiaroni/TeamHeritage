@@ -17,7 +17,7 @@ public static class TitulosEndpoints
         app.MapGet("/titulo/{nome}", async (IRepository<Titulo> repository, string nome) =>
         {
             var titulos = await repository.BuscaPorAsync(t => t.Nome.ToUpper().Contains(nome.ToUpper()));
-            if (titulos.Any())
+            if (titulos is not null)
             {
                 return Results.Ok(titulos);
             }
@@ -51,7 +51,14 @@ public static class TitulosEndpoints
         });
         app.MapPut("/titulo/{tituloId}", async (IRepository<Titulo> repository, int tituloId, TituloRequestEdit tituloRequestEdit) =>
         {
-
+            var titulo = await repository.BuscaPorAsync(t => t.Id.Equals(tituloId));
+            if (titulo is null)
+            {
+                return Results.NotFound("Nenhum título encontrado com esse id.");
+            }
+            titulo.Nome = tituloRequestEdit.Nome;
+            titulo.Ano = tituloRequestEdit.Ano;
+            return Results.Ok(titulo);
         });
     }
 }
