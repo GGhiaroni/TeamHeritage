@@ -65,5 +65,18 @@ public static class TitulosEndpoints
 
             return Results.Ok(titulo);
         });
+
+        app.MapDelete("/titulo/{tituloId}", async (IRepository<Titulo> repository, int tituloId) =>
+        {
+            var titulo = await repository.BuscaPorAsync(t => t.Id.Equals(tituloId));
+            if (titulo is null)
+            {
+                return Results.NotFound("Nenhum título encontrado com esse id.");
+            }
+
+            await repository.DeleteAsync(titulo.Id);
+
+            return Results.Ok(titulo);
+        });
     }
 }
